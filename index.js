@@ -8,7 +8,11 @@ dotenv.config({path: './config.env'})
 
 app.use(cors())
 app.use(bodyParser.urlencoded({extended: true}))
-app.use(bodyParser.json());
+app.use(
+    bodyParser.json({
+      limit: "5mb",
+    })
+);
 
 require('./connection.js')
 app.use(require('./routing/auth'))
